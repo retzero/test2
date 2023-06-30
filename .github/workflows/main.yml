@@ -15,4 +15,3 @@ jobs:
     steps:
       - run: apt-get update
       - uses: actions/checkout@v3
-      - uses: ./.github/workflows/a
