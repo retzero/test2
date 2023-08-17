@@ -1,20 +1,28 @@
-
-name: Test
+name: test
 
 on:
-  push:
   workflow_dispatch:
-
-env:
-  ACTIONS_STEP_DEBUG: true
+  push:
+  pull_request:
 
 jobs:
-  build:
-    runs-on: "ubuntu-latest"
-    container: ubuntu:20.04
-    steps:
-      - run: apt-get update
-      - uses: actions/checkout@v3
+  inside-host:
 
-      - run: cat /etc/hosts
-      - uses: imranismail/setup-kustomize@v2
+    strategy:
+      matrix:
+        v: [3.10.7, 3.8.10, 3.9.14]
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.v }}
+
+      - name: Python version check
+        run: |
+          python --version
+          if python --version | grep "${{ matrix.v }}"; then echo "OK"; else echo "NOK"; exit 1; fi
