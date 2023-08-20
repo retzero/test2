@@ -18,6 +18,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - run: |
+          docker pull alpine/git
+          docker images
+
       - uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.v }}
