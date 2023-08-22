@@ -18,6 +18,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: check aws connection
+        run: curl -v secretsmanager.ap-northeast-1.amazonaws.com
+
       - run: |
           docker pull alpine/git
           docker images
