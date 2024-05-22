@@ -1,5 +1,9 @@
 name: id-token test
 
+permissions:
+  contents: write
+  id-token: write
+
 on:
   push:
 
