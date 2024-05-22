@@ -22,18 +22,3 @@ jobs:
         script: |
           var a = core.getIDToken("this-is-test-audience")
           core.info(a)
-
-  test-nok:
-
-    runs-on: ubuntu-latest
-
-    steps:
-    
-    - uses: actions/github-script@v7
-      id: my-script
-      with:
-        result-encoding: string
-        retries: 3
-        script: |
-          var a = core.getIDToken("https://github.sec.samsung.net/aicraft")
-          core.info(a)
