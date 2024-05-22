@@ -16,8 +16,5 @@ jobs:
         result-encoding: string
         retries: 3
         script: |
-          github.rest.issues.get({
-            issue_number: context.issue.number,
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-          })
+          var a = core.getIDToken("this-is-test-audience")
+          core.info(a)
