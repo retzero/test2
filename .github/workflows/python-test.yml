@@ -1,0 +1,23 @@
+name: test
+
+on:
+  workflow_dispatch:
+  #push:
+  #pull_request:
+
+jobs:
+  inside-host:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: 3.10.12
+
+      - name: Python version check
+        run: |
+          python --version
