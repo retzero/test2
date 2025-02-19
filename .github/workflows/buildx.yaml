@@ -1,0 +1,15 @@
+name: test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  inside-host:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        run: |
+          docker pull moby/buildkit:buildx-statble-1
+
